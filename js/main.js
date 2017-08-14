@@ -143,7 +143,7 @@ function startApp() {
             contentType: "application/json",
             headers: kinveyAppAuthHeaders,
             success: registerUserSuccess,
-            error: ajaxError
+            error: handleAjaxError
         });
 
         function registerUserSuccess(userInfo) {
@@ -170,8 +170,20 @@ function startApp() {
     }
 
 
-    function ajaxError() {
-        alert("Ajax Error!")
+    function handleAjaxError(response) {
+        let errorMsg = JSON.stringify(response);
+        if (response.readyState === 0) {
+            errorMsg = "Cannot connect due to network error.";
+        }
+        if (response.responseJSON && response.responseJSON.description) {
+            errorMsg = response.responseJSON.description;
+        }
+        showError(errorMsg);
+    }
+
+    function showError(errorMsg) {
+        $('#errorBox').text("Error: " + errorMsg);
+        $('#errorBox').show();
     }
 
     function createEvent() {

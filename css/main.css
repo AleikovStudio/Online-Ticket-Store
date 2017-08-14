@@ -157,7 +157,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .companyinfo h2 {
   color: #B4B1AB;
-  font-family: abel, serif;
+  font-family: abel, Arial, sans-serif;
   font-size: 29px;
   font-weight: 600;
   text-transform: uppercase;
@@ -304,8 +304,8 @@ h1, h2, h3, h4, h5, h6 {
 .footer-bottom {
   background: #374851 url("http://lmsi-group.com/wp-content/uploads/2017/08/footer-pbckg.jpg");
   opacity: 0.7;
-  padding-top: 15px;
-  padding-bottom: 2px;
+  padding-top: 11px;
+  padding-bottom: 1px;
 }
 
 .footer-bottom p {
