@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teamwork SoftUni | Online Ticket Store</title>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+</head>
+<!--/head-->
+
+<body onload="startApp()">
+    <!--header-->
+    <header id="header">
+        <!--header-middle-->
+        <section class="header-middle">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="logo pull-left">
+                            <a href="#"><img src="images/logo.jpg"/></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="shop-menu pull-right">
+
+                            <ul class="navbar-nav nav">
+                                <li><a href="https://trello.com/b/dfRKkNc8/onlineticketstore" target="_blank"><img
+                                        src="images/trello.jpg"/></a></li>
+                                <li><a href="https://github.com/danielmihaylov/OnlineTicketStore" target="_blank"><img
+                                        src="images/github.jpg"/></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/header-middle-->
+
+        <!--header-bottom-->
+        <section class="header-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div id="menu" class="mainmenu pull-left">
+                            <ul class="nav navbar-nav">
+                                <li><a href="index.html" id="linkHome" class="active"><i class="fa fa-home"></i>
+                                    Home</a></li>
+                                <li><a href="#" id="linkEvents"><i class="fa fa-star"></i> Events</a></li>
+                                <li><a href="#" id="linkLogin"><i class="fa fa-lock"></i> Login</a></li>
+                                <li><a href="#" id="linkRegister"><i class="fa fa-user"></i> Register</a></li>
+                                <li><a href="#" id="linkAccount"><i class="fa fa-info"></i> My Account</a></li>
+                                <li><a href="#" id="linkCart"><i class="fa fa-shopping-cart"></i> Cart</a>
+                                </li>
+                                <li><a href="#" id="linkAdmin"><i class="fa fa-cog"></i> Admin</a></li>
+                                <li><a href="#" id="linkLogout"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                <!--                                <li><a href="checkout.html">C</a></li>
+                                                                <li><a href="product-details.html">D</a></li>-->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div id="usernameId" class="pull-right">
+                            <span id="loggedInUser">Welcome, Stranger! <a href="#" id="loginRedirect">Login</a> or <a
+                                    href="#" id="registerRedirect">Register</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/header-bottom-->
+    </header>
+    <!--/header-->
+
+    <section id="main">
+        <!--section viewHome-->
+        <section class="viewHome">
+            <!--section viewSlider-->
+            <section id="viewSlider">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                                    <li data-target="#slider-carousel" data-slide-to="1"></li>
+                                    <li data-target="#slider-carousel" data-slide-to="2"></li>
+                                </ol>
+
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <div class="col-sm-6">
+                                            <h1><span>Lili</span> Ivanova</h1>
+
+                                            <h2>Berlin, Germany</h2>
+                                            <hr>
+
+                                            <p>Concert of the special Bulgarian diva Lili Ivanova on 3rd of November
+                                                2017 in Berlin, Germany – TEMPODROM, Möckernstraße 10, 10963. Special
+                                                guests: BG
+                                                chalga stars.</p>
+
+                                            <p><strong>Price:</strong> 190 Euro (with VAT)</p>
+                                            <a href="#" class="btn btn-default get homeRedirect">Learn
+                                                More + <i class="fa fa-shopping-cart"></i></a>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <img src="images/lili.jpg" class="hero img-responsive"/>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-sm-6">
+                                            <h1><span>Svetlin</span> Nakov</h1>
+
+                                            <h2>Amsterdam, Holland</h2>
+                                            <hr>
+
+                                            <p>The influence of the beer on programmer's mind. How much beer to drink to
+                                                code
+                                                better? Press-conference on 31st of December 2017 at
+                                                23:59. Special guest: dyado Mraz.</p>
+
+                                            <p><strong>Price:</strong> 4500 Euro (with VAT)</p>
+
+                                            <a href="#" class="btn btn-default get homeRedirect">Learn
+                                                More + <i class="fa fa-shopping-cart"></i></a>
+
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <img src="images/nakov.jpg" class="hero img-responsive"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="item">
+                                        <div class="col-sm-6">
+                                            <h1><span>Hristo</span> Stoichkov</h1>
+
+                                            <h2>Sofia, Bulgaria</h2>
+                                            <hr>
+
+                                            <p>Barcelona all stars VS Bulgarian 1994 team. The event will take place in
+                                                Sofia,
+                                                Bulgaria on 1st of October 2017 at 19:00. Special guests: H. Stoichkov,
+                                                Messi,
+                                                Ronaldo, Team "Pomelo", etc.</p>
+
+                                            <p><strong>Price:</strong> 250 lv. (with VAT)</p>
+                                            <a href="#" class="btn btn-default get homeRedirect">Learn
+                                                More + <i class="fa fa-shopping-cart"></i></a>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <img src="images/stoichkov.jpg" class="hero img-responsive"/>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                                    <i class="fa fa-angle-left"></i>
+                                </a>
+                                <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--/section viewSlider-->
+
+            <!--section viewEventsImages-->
+            <section id="viewEventsImages">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <section id="viewLeftSidebar">
+                                <h2>Events Category</h2>
+
+                                <!--category-products-->
+                                <div class="panel-group category-products" id="accordian">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"><a href="#" class="homeRedirect">Concerts<span
+                                                    class="badge pull-right"><i class="fa fa-music"></i></span></a></h4>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"><a href="#" class="homeRedirect">Special Events<span
+                                                    class="badge pull-right"><i class="fa fa-microphone"></i></span></a>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"><a href="#" class="homeRedirect">Theater<span
+                                                    class="badge pull-right"><i class="fa fa-male"></i></span></a></h4>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"><a href="#" class="homeRedirect">Sport Events<span
+                                                    class="badge pull-right"><i class="fa fa-male"></i></span></a></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/category-products-->
+
+                                <!--brands_products-->
+                                <div class="brands_products">
+                                    <h2>Locations</h2>
+
+                                    <div class="brands-name">
+                                        <ul class="nav nav-pills nav-stacked">
+                                            <li><a href="#" class="homeRedirect"><span class="pull-right"><img
+                                                    src="images/Bulgaria.png"></span>Bulgaria</a></li>
+                                            <li><a href="#" class="homeRedirect"><span class="pull-right"><img
+                                                    src="images/UK.png"></span>Great Britain</a></li>
+                                            <li><a href="#" class="homeRedirect"><span class="pull-right"><img
+                                                    src="images/Germany.png"></span>Germany</a></li>
+                                            <li><a href="#" class="homeRedirect"><span class="pull-right"><img
+                                                    src="images/Russia.png"></span>Russia</a></li>
+                                            <li><a href="#" class="homeRedirect"><span class="pull-right"><img
+                                                    src="images/Spain.png"></span>Spain</a></li>
+                                            <li><a href="#" class="homeRedirect"><span class="pull-right"><img
+                                                    src="images/China.png"></span>China</a></li>
+                                            <li><a href="#" class="homeRedirect"><span class="pull-right"><img
+                                                    src="images/USA.png"></span>USA</a></li>
+                                        </ul>
+                                    </div>
+                                    <img id="img-banner" src="images/map.png" align="center"/>
+                                    <br>
+                                </div>
+                                <!--/brands_products-->
+                            </section>
+                        </div>
+
+                        <div class="col-sm-9 padding-right">
+
+                            <!--featured_items-->
+                            <section id="viewFeaturedEvents">
+                                <h2 class="title text-center">Events Near You</h2>
+
+                                <div class="col-sm-4">
+                                    <div class="product-image-wrapper">
+                                        <div class="single-products">
+                                            <div class="productinfo text-center">
+                                                <img src="images/event1.jpg"/>
+
+                                                <h2>25 lv.</h2>
+
+                                                <p>Vasko Vasilev</p><br>
+                                                <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                        class="fa fa-info"></i>
+                                                    MORE
+                                                    INFO + <i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="product-image-wrapper">
+                                        <div class="single-products">
+                                            <div class="productinfo text-center">
+                                                <img src="images/event2.jpg"/>
+
+                                                <h2>16 lv.</h2>
+
+                                                <p>The Queen Play</p><br>
+                                                <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                        class="fa fa-info"></i>
+                                                    MORE
+                                                    INFO + <i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="product-image-wrapper">
+                                        <div class="single-products">
+                                            <div class="productinfo text-center">
+                                                <img src="images/event3.jpg"/>
+
+                                                <h2>20 lv.</h2>
+
+                                                <p>Vasil Naidenov</p><br>
+                                                <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                        class="fa fa-info"></i>
+                                                    MORE
+                                                    INFO + <i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <!--featured_items-->
+
+                            <!--category-tab-->
+                            <section id="viewCategoryTab">
+                                <div class="col-sm-12">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#concerts" data-toggle="tab"><i
+                                                class="fa fa-music"></i>
+                                            Concerts</a></li>
+                                        <li><a href="#specialEvents" data-toggle="tab"><i class="fa fa-microphone"></i>
+                                            Special Events</a></li>
+                                        <li><a href="#theater" data-toggle="tab"><i class="fa fa-film"></i> Theater</a>
+                                        </li>
+                                        <li><a href="#sportEvents" data-toggle="tab"><i class="fa fa-male"></i> Sport
+                                            Events</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tab-content">
+                                    <!--Concerts-tab-->
+                                    <div class="tab-pane fade active in" id="concerts">
+                                        <div class="col-sm-3">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <img src="images/con1.jpg"/>
+
+                                                        <h2>22 lv.</h2>
+
+                                                        <p>Georgi Hristov</p>
+
+                                                        <p><strong>Concert</strong></p><br>
+
+                                                        <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                                class="fa fa-info"></i> MORE
+                                                            INFO + <i class="fa fa-shopping-cart"></i></a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <img src="images/con2.jpg"/>
+
+                                                        <h2>150 lv.</h2>
+
+                                                        <p>Lili Ivanova</p>
+
+                                                        <p><strong>Concert</strong></p><br>
+
+                                                        <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                                class="fa fa-info"></i> MORE
+                                                            INFO + <i class="fa fa-shopping-cart"></i></a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <img src="images/con3.jpg"/>
+
+                                                        <h2>23 lv.</h2>
+
+                                                        <p>Fondaciayata</p>
+
+                                                        <p><strong>Concert</strong></p><br>
+
+                                                        <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                                class="fa fa-info"></i> MORE
+                                                            INFO + <i class="fa fa-shopping-cart"></i></a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <img src="images/con4.jpg"/>
+
+                                                        <h2>120 euro</h2>
+
+                                                        <p>DJ Tiesto</p>
+
+                                                        <p><strong>Concert</strong></p><br>
+
+                                                        <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                                class="fa fa-info"></i> MORE
+                                                            INFO + <i class="fa fa-shopping-cart"></i></a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/Concerts-tab-->
+
+                                    <!--Special Events-tab-->
+                                    <div class="tab-pane fade" id="specialEvents">
+                                        <div class="col-sm-3">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <img src="images/se1.jpg"/>
+
+                                                        <h2>$15.000</h2>
+
+                                                        <p>Donald Trump</p>
+
+                                                        <p><strong>Press Conference</strong></p><br>
+
+                                                        <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                                class="fa fa-info"></i> MORE
+                                                            INFO + <i class="fa fa-shopping-cart"></i></a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <img src="images/se2.jpg"/>
+
+                                                        <h2>2500 lv.</h2>
+
+                                                        <p>Boiko Borisov</p>
+
+                                                        <p><strong>Press Conference</strong></p><br>
+
+                                                        <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                                class="fa fa-info"></i> MORE
+                                                            INFO + <i class="fa fa-shopping-cart"></i></a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <img src="images/se3.jpg"/>
+
+                                                        <h2>15 lv.</h2>
+
+                                                        <p>Stoyanka Mutafova</p>
+
+                                                        <p><strong>Press Conference</strong></p><br>
+
+                                                        <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                                class="fa fa-info"></i> MORE
+                                                            INFO + <i class="fa fa-shopping-cart"></i></a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <img src="images/se4.jpg"/>
+
+                                                        <h2>25 lv.</h2>
+
+                                                        <p>Marius Kurkinski</p>
+
+                                                        <p><strong>Press Conference</strong></p><br>
+
+                                                        <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                                class="fa fa-info"></i> MORE
+                                                            INFO + <i class="fa fa-shopping-cart"></i></a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/Special Events-tab-->
+
+                                    <!--Theater-tab-->
+                                    <div class="tab-pane fade" id="theater">
+                                        <div class="col-sm-3">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <img src="images/th1.jpg"/>
+
+                                                        <h2>16 lv.</h2>
+
+                                                        <p>My wife's name is Boris</p>
+
+                                                        <p><strong>Theater Play</strong></p><br>
+
+                                                        <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                                class="fa fa-info"></i> MORE
+                                                            INFO + <i class="fa fa-shopping-cart"></i></a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <img src="images/th2.jpg"/>
+
+                                                        <h2>16 lv.</h2>
+
+                                                        <p>When the cat is gone</p>
+
+                                                        <p><strong>Theater Play</strong></p><br>
+
+                                                        <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                                class="fa fa-info"></i> MORE
+                                                            INFO + <i class="fa fa-shopping-cart"></i></a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <img src="images/th3.jpg"/>
+
+                                                        <h2>16 lv.</h2>
+
+                                                        <p>Kamen Donev</p>
+
+                                                        <p><strong>Theater Play</strong></p><br>
+
+
+                                                        <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                                class="fa fa-info"></i> MORE
+                                                            INFO + <i class="fa fa-shopping-cart"></i></a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <img src="images/th4.jpg"/>
+
+                                                        <h2>16 lv.</h2>
+
+                                                        <p>The Queen's Play</p>
+
+                                                        <p><strong>Theater Play</strong></p><br>
+
+                                                        <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                                class="fa fa-info"></i> MORE
+                                                            INFO + <i class="fa fa-shopping-cart"></i></a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/Theater-tab-->
+
+                                    <!--Sport Events-tab-->
+                                    <div class="tab-pane fade" id="sportEvents">
+                                        <div class="col-sm-3">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <img src="images/spoe1.jpg"/>
+
+                                                        <h2>$7500</h2>
+
+                                                        <p>L. Messi</p>
+
+                                                        <p><strong>Performance</strong></p><br>
+                                                        <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                                class="fa fa-info"></i> MORE
+                                                            INFO + <i class="fa fa-shopping-cart"></i></a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <img src="images/spoe2.jpg"/>
+
+                                                        <h2>$7500</h2>
+
+                                                        <p>C. Ronaldo</p>
+
+                                                        <p><strong>Performance</strong></p><br>
+
+                                                        <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                                class="fa fa-info"></i> MORE
+                                                            INFO + <i class="fa fa-shopping-cart"></i></a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <img src="images/spoe3.jpg"/>
+
+                                                        <h2>200 lv.</h2>
+
+                                                        <p>L. Penev</p>
+
+                                                        <p><strong>Performance</strong></p><br>
+
+                                                        <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                                class="fa fa-info"></i> MORE
+                                                            INFO + <i class="fa fa-shopping-cart"></i></a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <img src="images/spoe4.jpg"/>
+
+                                                        <h2>2 lv.</h2>
+
+                                                        <p>G. Bacov</p>
+
+                                                        <p><strong>Performance</strong></p><br>
+
+                                                        <a href="#" class="btn btn-default add-to-cart homeRedirect"><i
+                                                                class="fa fa-info"></i> MORE
+                                                            INFO + <i class="fa fa-shopping-cart"></i></a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/Sport Events-tab-->
+                                </div>
+                            </section>
+                            <!--/category-tab-->
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--/section viewEventsImages-->
+        </section>
+        <!--/section viewHome-->
+
+        <!--main elements for the project-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <!--boxes-->
+                        <section id="loadingBox">Loading...</section>
+                        <section id="infoBox">Info</section>
+                        <section id="errorBox">Error</section>
+                    <!--/boxes-->
+
+                    <!--login form viewLogin-->
+                    <section id="viewLogin" class="login-form">
+                        <h2><i class="fa fa-lock"></i> Login to Your Account:</h2>
+
+                        <form id="formLogin">
+                            <input type="text" placeholder="Username" required/>
+                            <input type="password" placeholder="Password" required/>
+                            <input type="button" id="buttonLoginUser" value="Login"/>
+                        </form>
+                    </section>
+                    <!--/login form viewLogin-->
+
+                    <!--sign up form viewRegister-->
+                    <section id="viewRegister" class="signup-form">
+                        <h2><i class="fa fa-user"></i> New User Registration:</h2>
+
+                        <form id="formRegister">
+                            <input type="text" name="username" placeholder="Username" required/>
+                            <input type="password" name="passwd" placeholder="Password" required/>
+                            <input type="button" id="buttonRegisterUser" value="Register"/>
+                        </form>
+                    </section>
+                    <!--/sign up form viewRegister-->
+
+                    <!--viewEvents-->
+                    <section id="viewEvents">
+                        <h2><i class="fa fa-star"></i> EVENTS LIST</h2>
+                        <hr>
+
+                        <div id="events">
+                            <table>
+                                <tr>
+                                    <td>Title</td>
+                                    <td>Author</td>
+                                    <td>Description</td>
+                                    <td>Actions</td>
+                                </tr>
+                                <tr>
+                                    <td>Event Title</td>
+                                    <td>Event Author</td>
+                                    <td>Event Description</td>
+                                    <td>
+                                        <a href="">[Delete]</a>
+                                        <a href="">[Edit]</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Event Title</td>
+                                    <td>Event Author</td>
+                                    <td>Event Description</td>
+                                    <td>
+                                        <a href="">[Delete]</a>
+                                        <a href="">[Edit]</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Event Title</td>
+                                    <td>Event Author</td>
+                                    <td>Event Description</td>
+                                    <td>
+                                        <a href="">[Delete]</a>
+                                        <a href="">[Edit]</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </section>
+                    <!--/viewEvents-->
+
+                    <!--viewMyAccount-->
+                    <section id="viewMyAccount">
+                        <h2><i class="fa fa-info"></i> MY ACCOUNT</h2>
+                        <hr>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti eligendi, ex hic iste iure
+                            mollitia neque odio pariatur quod soluta. Aspernatur at corporis est laborum nihil
+                            repellendus
+                            unde! Cupiditate, iure. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta
+                            distinctio doloribus illum nostrum quae quis quo ratione voluptatem? Architecto dolores
+                            incidunt
+                            iusto necessitatibus, odio officia omnis quisquam rerum sed veritatis.</p>
+                    </section>
+                    <!--/viewMyAccount-->
+
+                    <!--viewCart-->
+                    <section id="viewCart">
+                        <h2><i class="fa fa-shopping-cart"></i> SHOPPING CART</h2>
+                        <hr>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti eligendi, ex hic iste iure
+                            mollitia neque odio pariatur quod soluta. Aspernatur at corporis est laborum nihil
+                            repellendus
+                            unde! Cupiditate, iure. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci
+                            aperiam delectus, deleniti et ipsam labore minima nemo optio pariatur, placeat, porro sed
+                            tenetur. Autem delectus dolorem recusandae reprehenderit, vero voluptates!</p>
+                    </section>
+                    <!--/viewCart-->
+
+                    <!--viewAdmin-->
+                    <section id="viewAdmin">
+                        <h2><i class="fa fa-cog"></i> ADMINISTRATOR [ EDIT | ADD | DELETE ] EVENTS</h2>
+                        <hr>
+
+                        <h2>Edit Existing Event</h2>
+
+                        <form id="formEditEvent" class="eventForms">
+                            <div><input type="hidden" name="id" required/></div>
+                            <div>Title:</div>
+                            <div><input type="text" name="title" required/></div>
+                            <div>Author:</div>
+                            <div><input type="text" name="author" required/></div>
+                            <div>Description:</div>
+                            <div><textarea name="descr" rows="10"
+                                           required></textarea></div>
+                            <br>
+
+                            <div><input type="submit" class="get" value="Edit Event"/></div>
+                        </form>
+                        <hr>
+                        <h2>Create New Event</h2>
+
+                        <form id="formCreateEvent" class="eventForms">
+
+                            <div>Title:</div>
+                            <div><input type="text" name="title" required></div>
+                            <div>Author:</div>
+                            <div><input type="text" name="author" required></div>
+                            <div>Description:</div>
+                            <div><textarea name="descr" rows="10" required></textarea></div>
+                            <br>
+
+                            <div><input type="button" id="buttonCreateEvent"  class="get" value="Create Event"></div>
+                        </form>
+                    </section>
+                    <!--/viewAdmin-->
+                </div>
+            </div>
+        </div>
+        <!--/main elements for the project-->
+    </section>
+    <!--Footer-->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="companyinfo">
+                            <h2><span>Soft</span>Uni</h2>
+
+                            <p>Team "Pomelo"</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="col-sm-3">
+                            <div class="video-gallery text-center">
+                                <a href="https://www.facebook.com/profile.php?id=100017917985267" target="_blank">
+                                    <div class="iframe-img">
+                                        <img src="images/dm.jpg"/>
+                                    </div>
+                                </a>
+
+                                <h2>Daniel Mihaylov</h2>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="video-gallery text-center">
+                                <a href="https://www.facebook.com/ivo.baramov" target="_blank">
+                                    <div class="iframe-img">
+                                        <img src="images/ib.jpg"/>
+                                    </div>
+                                </a>
+
+                                <h2>Ivo Baramov</h2>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="video-gallery text-center">
+                                <a href="https://www.facebook.com/aleksandarvpavlov" target="_blank">
+                                    <div class="iframe-img">
+                                        <img src="images/ap.jpg"/>
+                                    </div>
+                                </a>
+
+                                <h2>Alexander Pavlov</h2>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="video-gallery text-center">
+                                <a href="https://www.facebook.com/alex.alexi1" target="_blank">
+                                    <div class="iframe-img">
+                                        <img src="images/al.jpg"/>
+                                    </div>
+                                </a>
+
+                                <h2>Alexander Leykov</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="video-gallery text-center">
+                            <a href="https://www.facebook.com/StoyanTodorovbg" target="_blank">
+                                <div class="iframe-img">
+                                    <img src="images/stt.jpg"/>
+                                </div>
+                            </a>
+
+                            <h2>Stoyan Todorov</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom navbar-fixed-bottom">
+            <div class="container">
+                <div class="row">
+                    <p class="pull-left">&copy; 2017 SoftUni Team "Pomelo" | <a
+                            href="https://trello.com/b/dfRKkNc8/onlineticketstore" target="_blank">Trello</a> | <a
+                            href="https://github.com/danielmihaylov/OnlineTicketStore" target="_blank">GitHub</a></p>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!--/Footer-->
+</body>
+</html>

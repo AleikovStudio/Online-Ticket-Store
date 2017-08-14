@@ -1,0 +1,13 @@
+USERNAME:
+mitkokolarov28@abv.bg
+
+PASSWORD:
+mitkokolarov28
+
+///////////////////////////////////////////////////////////////////////
+
+App Key:
+kid_ryGHXTOvb
+
+App Secret:
+e708ad84ba49439287fbd21d985b4950
