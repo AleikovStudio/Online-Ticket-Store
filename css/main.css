@@ -1,9 +1,9 @@
 ﻿/*************************
 *******Typography******
 **************************/
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,100);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
-@import url(http://fonts.googleapis.com/css?family=Abel);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,100);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
+@import url(https://fonts.googleapis.com/css?family=Abel);
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -157,7 +157,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .companyinfo h2 {
   color: #B4B1AB;
-  font-family: abel, Arial, sans-serif;
+  font-family: 'Abel', sans-serif;
   font-size: 29px;
   font-weight: 600;
   text-transform: uppercase;
