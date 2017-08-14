@@ -127,7 +127,7 @@ function startApp() {
         $('#loggedInUser').text("Welcome, Stranger!");
         showHideMenuLinks();
         showView("viewEvents");
-        showInfo("Sad to see you go :-(");
+        showInfo("Sad to see you go...");
     }
 
     //Bind the form submit buttons - functions
