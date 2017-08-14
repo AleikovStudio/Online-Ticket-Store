@@ -123,18 +123,42 @@ function startApp() {
     }
 
     function logoutUser() {
-
+        sessionStorage.clear();
+        $('#loggedInUser').text("Welcome, Stranger!");
+        showInfo("Sad to see you go :-(");
+        showView("viewEvents");
+        showHideMenuLinks();
     }
 
     //Bind the form submit buttons - functions
     function loginUser() {
+        let userData = {
+            username: $('#formLogin input[name=username]').val(),
+            password: $('#formLogin input[name=passwd]').val()
+        };
 
+        $.ajax({
+            method: "POST",
+            url: kinveyBaseUrl + "user/" + kinveyAppKey + "/login",
+            data: JSON.stringify(userData),
+            contentType: "application/json",
+            headers: kinveyAppAuthHeaders,
+            success: loginUserSuccess,
+            error: handleAjaxError
+        });
+
+        function loginUserSuccess(userInfo) {
+            saveAuthInSession(userInfo);
+            showHideMenuLinks();
+            showEventsView();
+            showInfo("Login successful.");
+        }
     }
 
     function registerUser() {
         let userData = {
             username: $('#formRegister input[name=username]').val(),
-            password: $('#formRegister input[name=passw]').val()
+            password: $('#formRegister input[name=passwd]').val()
         };
         $.ajax({
             method: "POST",
