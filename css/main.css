@@ -116,6 +116,7 @@ h1, h2, h3, h4, h5, h6 {
 .mainmenu ul li {
   padding-right: 15px;
   padding-left: 15px;
+  display: inline-block;
 }
 
 .mainmenu ul li:first-child {
@@ -262,7 +263,7 @@ h1, h2, h3, h4, h5, h6 {
   top: 50px;
 }
 
-.footer-widget {
+/*.footer-widget {
   margin-bottom: 68px;
 }
 
@@ -299,13 +300,12 @@ h1, h2, h3, h4, h5, h6 {
 .single-widget ul li a:hover {
   background: none;
   color: #FE980F;
-}
+}*/
 
 .footer-bottom {
   background: #374851 url("http://lmsi-group.com/wp-content/uploads/2017/08/footer-pbckg.jpg");
   opacity: 0.7;
-  padding-top: 11px;
-  padding-bottom: 0;
+  bottom: 0;
 }
 
 .footer-bottom p {
@@ -313,12 +313,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   margin-left: 16px;
-}
-
-.footer-bottom p span a {
-  color: #FE980F;
-  font-style: italic;
-  text-decoration: underline;
+  padding-top: 11px;
 }
 
 .footer-bottom a {
@@ -1106,7 +1101,7 @@ h2.title {
 .login-form, .signup-form {
   width: 50%;
   background: #374851;
-  margin: 5% auto 10% auto;
+  margin: 5% auto 15% auto;
   padding: 30px 50px 50px 50px;
   border-radius: 30px;
   box-shadow: 2px 2px 2px #888888;
