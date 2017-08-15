@@ -1106,7 +1106,7 @@ h2.title {
 .login-form, .signup-form {
   width: 50%;
   background: #374851;
-  margin: 100px auto;
+  margin: 5% auto 10% auto;
   padding: 30px 50px 50px 50px;
   border-radius: 30px;
   box-shadow: 2px 2px 2px #888888;
@@ -1626,18 +1626,6 @@ h2.title {
   display: none;
 }
 
-table th {
-  background: #dddddd;
-  padding: 10px;
-  color: #A6A6A1;
-}
-
-table td {
-  padding: 5px 10px;
-  background: #F0F0E9;
-  color: #A6A6A1;
-}
-
 #img-banner {
   margin: 17% 23% 0 17%;
 }
@@ -1650,6 +1638,23 @@ table td {
   margin-bottom: 100px;
 }
 
-/*.eventForms input {
-  background: #000;
-}*/
+#events > table {
+  margin: auto auto 10%;
+  border: 2px solid #374851;
+}
+
+#events table th {
+  background: #374851;
+  padding: 10px;
+  color: #fff;
+  border: 1px solid #374851;
+  border-right-color: #fff;
+  text-align: center;
+}
+
+#events table td {
+  padding: 5px 10px;
+  background: #F7F7F5;
+  color: #374851;
+  border: 1px solid #374851;
+}

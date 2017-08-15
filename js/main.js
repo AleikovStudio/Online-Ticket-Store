@@ -87,6 +87,7 @@ function startApp() {
         $('#main').find('section').hide();
         $('#' + viewName).show();
         $('.footer-top').hide();
+        //$('#footer-bottom').removeClass('navbar-fixed-bottom');
     }
 
     //Bind the navigation menu links - functions
@@ -127,7 +128,7 @@ function startApp() {
         $('#loggedInUser').text("Welcome, Stranger!");
         showHideMenuLinks();
         showView("viewEvents");
-        showInfo("Sad to see you go...");
+        showInfo("Logout successful.");
     }
 
     //Bind the form submit buttons - functions
