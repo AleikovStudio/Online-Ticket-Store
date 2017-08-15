@@ -9,7 +9,7 @@ function startApp() {
     };
 
     //Clear user auth data
-    //sessionStorage.clear();
+    sessionStorage.clear();
 
     showHideMenuLinks();
 
