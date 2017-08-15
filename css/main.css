@@ -1645,6 +1645,7 @@ h2.title {
   border: 1px solid #374851;
   border-right-color: #fff;
   text-align: center;
+  font-weight: 500;
 }
 
 #events table td {
@@ -1652,4 +1653,5 @@ h2.title {
   background: #F7F7F5;
   color: #374851;
   border: 1px solid #374851;
+  font-weight: 400;
 }
