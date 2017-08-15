@@ -1626,11 +1626,11 @@ h2.title {
 }
 
 #formEditEvent, #formCreateEvent {
-  width: 50%;
+  width: 100%;
 }
 
-#formCreateEvent {
-  margin-bottom: 100px;
+#formEditEvent {
+  margin-bottom: 10%;
 }
 
 #events > table {

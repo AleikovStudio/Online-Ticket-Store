@@ -840,9 +840,30 @@
                         <h2><i class="fa fa-cog"></i> ADMINISTRATOR [ EDIT | ADD | DELETE ] EVENTS</h2>
                         <hr>
 
-                        <h2>Edit Existing Event</h2>
-
+                        <form id="formCreateEvent" class="eventForms">
+                            <h2>Create New Event</h2>
+                            <h4>Event:</h4>
+                            <div><input type="text" name="event" required></div>
+                            <h4>Category (Concert, Special Event, Theater or Sport Event):</h4>
+                            <div><input type="text" name="category" required></div>
+                            <h4>Date:</h4>
+                            <div><input type="date" name="date" required></div>
+                            <h4>Location:</h4>
+                            <div><input type="text" name="location" required></div>
+                            <h4>Price:</h4>
+                            <div><input type="number" name="price" required></div>
+                            <h4>Currency (lv., euro or dollars):</h4>
+                            <div><input type="text" name="currency" required></div>
+                            <h4>Available Tickets:</h4>
+                            <div><input type="number" name="available-tickets" required></div>
+                            <h4>Description:</h4>
+                            <div><textarea name="descr" rows="10" required></textarea></div><br>
+                            <div><input type="button" id="buttonCreateEvent" class="get" value="Create Event"></div>
+                        </form>
+                        <hr>
                         <form id="formEditEvent" class="eventForms">
+                            <h2>Edit Existing Event</h2>
+
                             <div><input type="hidden" name="id" required/></div>
                             <div>Title:</div>
                             <div><input type="text" name="title" required/></div>
@@ -854,21 +875,6 @@
                             <br>
 
                             <div><input type="submit" class="get" value="Edit Event"/></div>
-                        </form>
-                        <hr>
-                        <h2>Create New Event</h2>
-
-                        <form id="formCreateEvent" class="eventForms">
-
-                            <div>Title:</div>
-                            <div><input type="text" name="title" required></div>
-                            <div>Author:</div>
-                            <div><input type="text" name="author" required></div>
-                            <div>Description:</div>
-                            <div><textarea name="descr" rows="10" required></textarea></div>
-                            <br>
-
-                            <div><input type="button" id="buttonCreateEvent" class="get" value="Create Event"></div>
                         </form>
                     </section>
                     <!--/viewAdmin-->
