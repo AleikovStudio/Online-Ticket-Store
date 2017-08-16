@@ -353,13 +353,36 @@ function startApp() {
         });
 
         function createEventSuccess() {
-            showInfo("Event created.");
             showEventsView();
+            showInfo("Event created.");
         }
     }
 
     function editEvent() {
+        let eventData = {
+            star: $('#formEditEvent input[name=star]').val(),
+            category: $('#formEditEvent select[name=category]').val(),
+            date: $('#formEditEvent input[name=date]').val(),
+            location: $('#formEditEvent input[name=location]').val(),
+            price: $('#formEditEvent input[name=price]').val(),
+            currency: $('#formEditEvent select[name=currency]').val(),
+            tickets: $('#formEditEvent input[name=tickets]').val(),
+            description: $('#formEditEvent textarea[name=description]').val()
+        };
+        $.ajax({
+            method: "PUT",
+            url: kinveyBaseUrl + "appdata/" + kinveyAppKey + "/ticket-store/" +
+            $('#formEditEvent input[name=id]').val(),
+            headers: getKinveyUserAuthHeaders(),
+            data: eventData,
+            success: editEventSuccess,
+            error: handleAjaxError
+        });
 
+        function editEventSuccess() {
+            showEventsView();
+            showInfo("Event edited.");
+        }
     }
 
     function loadEventForEdit(eventId) {
