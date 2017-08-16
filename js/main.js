@@ -157,7 +157,7 @@ function startApp() {
                 let links = [];
 
                 if (sessionStorage.getItem("username") === "admin") {
-                    let deleteLink = $('<a href="#">[Delete]</a>')
+                    let deleteLink = $('<a href="#">[DELETE]</a>')
                         .click(function () {
                             deleteEventById(event._id)
                         });
@@ -165,8 +165,9 @@ function startApp() {
                         .click(function () {
                             loadEventForEdit(event._id);
                         });
+                    let hr = $('<hr>');
                     links.push(deleteLink);
-                    links.push(" ");
+                    links.push(hr);
                     links.push(editLink);
 
                     tr.append(
@@ -181,7 +182,7 @@ function startApp() {
                         $('<td>').append(links)
                     )
                 } else {
-                    let buyLink = $('<a href="#">Buy Ticket</a>');
+                    let buyLink = $('<a href="#">BUY TICKET</a>');
                     links.push(buyLink);
 
                     tr.append(
