@@ -8,35 +8,42 @@ function startApp() {
         "Authorization": "Basic " + btoa(kinveyAppKey + ":" + kinveyAppSecret)
     };
 
-    //Clear user auth data
-    sessionStorage.clear();
+    function getKinveyUserAuthHeaders() {
+        return {
+            "Authorization": "Kinvey " + sessionStorage.getItem("authtoken")
+        }
+    }
 
+//Clear user auth data
+//    sessionStorage.clear();
     showHideMenuLinks();
 
-    //Bind the navigation menu links
+//Bind the navigation menu links
     $('#linkHome').click(showHomeView);
 
     $('#linkEvents').click(showEventsView);
     $('.homeRedirect').click(showEventsView);
 
     $('#linkLogin').click(showLoginView);
-    $('#loginRedirect').click(showLoginView);
+    $('#linkCreate').click(showCreateView);
+    $('#linkEdit').click(showEditView);
 
     $('#linkRegister').click(showRegisterView);
     $('#registerRedirect').click(showRegisterView);
 
     $('#linkAccount').click(showMyAccountView);
     $('#linkCart').click(showCartView);
-    $('#linkAdmin').click(showAdminView);
+
     $('#linkLogout').click(logoutUser);
 
-    //Bind the form submit buttons
+//Bind the form submit buttons
     $('#buttonLoginUser').click(loginUser);
     $('#buttonRegisterUser').click(registerUser);
     $('#buttonCreateEvent').click(createEvent);
-    //TO DO...
+    $('#buttonEditEvent').click(editEvent);
+//TO DO...
 
-    //Click to hide #infoBox and #errorBox
+//Click to hide #infoBox and #errorBox
     $('#infoBox').click(function () {
         $('#infoBox').fadeOut();
     });
@@ -45,7 +52,7 @@ function startApp() {
         $('#errorBox').fadeOut();
     });
 
-    //Attach AJAX "loading" event listener
+//Attach AJAX "loading" event listener
     $(document).on({
             ajaxStart: function () {
                 $('#loadingBox').show()
@@ -59,44 +66,154 @@ function startApp() {
     function showHideMenuLinks() {
         $('#menu').find('a').hide();
         //Logged in user
-        if (sessionStorage.getItem("authToken")) {
+        if (sessionStorage.getItem("authtoken")) {
             $('#linkHome').hide();
             $('#linkEvents').show().css("font-size", "20px");
             $('#linkAccount').show();
             $('#linkCart').show();
-            $('#linkAdmin').show();
             $('#linkLogout').show();
         } else {
             $('#linkHome').show().css("font-size", "22px");
             $('#linkEvents').show().css("font-size", "22px");
             $('#linkLogin').show().css("font-size", "22px");
             $('#linkRegister').show().css("font-size", "22px");
-            /*            $('#linkHome').show();
-             $('#linkEvents').show();
-             $('#linkLogin').show();
-             $('#linkRegister').show();
-             $('#linkAccount').show();
-             $('#linkCart').show();
-             $('#linkAdmin').show();
-             $('#linkLogout').show();*/
+        }
+        if (sessionStorage.getItem("username") === "admin") {
+            $('#linkCreate').show();
+            $('#linkEdit').show();
+        } else {
+            $('#linkCreate').hide();
+            $('#linkEdit').hide();
         }
     }
 
-    //Hides/Shows sections relative to the menu link
+//Hides/Shows sections relative to the menu link
     function showView(viewName) {
         $('#main').find('section').hide();
         $('#' + viewName).show();
         $('.footer-top').hide();
-        //$('#footer-bottom').removeClass('navbar-fixed-bottom');
+        $('#footer-bottom').removeClass('navbar-fixed-bottom');
     }
 
-    //Bind the navigation menu links - functions
+//Bind the navigation menu links - functions
     function showHomeView() {
         showView("viewHome");
     }
 
     function showEventsView() {
         showView("viewEvents");
+        if (sessionStorage.getItem("authtoken")) {
+            $.ajax({
+                method: "GET",
+                url: kinveyBaseUrl + "appdata/" + kinveyAppKey + "/ticket-store",
+                contentType: "application/json",
+                headers: getKinveyUserAuthHeaders(),
+                success: loadEventsSuccess,
+                error: handleAjaxError
+            });
+        } else {
+            const kinveyUsername = "guest";
+            const kinveyPassword = "guest";
+            const base64auth = btoa(kinveyUsername + ":" + kinveyPassword);
+            const authHeader = {
+                "Authorization": "Basic " + base64auth,
+                "Content-type": "application/json"
+            };
+            $.ajax({
+                method: "GET",
+                url: kinveyBaseUrl + "appdata/" + kinveyAppKey + "/ticket-store",
+                contentType: "application/json",
+                headers: authHeader,
+                success: loadEventsSuccess,
+                error: handleAjaxError
+            });
+        }
+
+        function loadEventsSuccess(events) {
+            $('#events').empty();
+            let table = $(`
+                <table>
+                    <tr>
+                        <th>Event Star</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Price</th>
+                        <th>Currency</th>
+                        <th>Tickets</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                </table>`);
+            for (let event of events) {
+                let tr = $('<tr>');
+                displayTableRow(tr, event);
+                tr.appendTo(table);
+            }
+
+            $('#events').append(table);
+
+            function displayTableRow(tr, event) {
+                let links = [];
+
+                if (sessionStorage.getItem("username") === "admin") {
+                    let deleteLink = $('<a href="#">[Delete]</a>')
+                        .click(function () {
+                            deleteEventById(event._id)
+                        });
+                    let editLink = $('<a href="#">[Edit]</a>')
+                        .click(function () {
+                            loadEventForEdit(event._id);
+                        });
+                    links.push(deleteLink);
+                    links.push(" ");
+                    links.push(editLink);
+
+                    tr.append(
+                        $('<td>').text(event.star),
+                        $('<td>').text(event.category),
+                        $('<td>').text(event.date),
+                        $('<td>').text(event.location),
+                        $('<td>').text(event.price),
+                        $('<td>').text(event.currency),
+                        $('<td>').text(event.tickets),
+                        $('<td>').text(event.description),
+                        $('<td>').append(links)
+                    )
+                } else {
+                    let buyLink = $('<a href="#">Buy Ticket</a>');
+                    links.push(buyLink);
+
+                    tr.append(
+                        $('<td>').text(event.star),
+                        $('<td>').text(event.category),
+                        $('<td>').text(event.date),
+                        $('<td>').text(event.location),
+                        $('<td>').text(event.price),
+                        $('<td>').text(event.currency),
+                        $('<td>').text(event.tickets),
+                        $('<td>').text(event.description),
+                        $('<td>').append(links).css("background", "#FE980F").css("font-style", "italic")
+                    )
+                }
+
+            }
+        }
+    }
+
+    function deleteEventById(eventId) {
+        $.ajax({
+            method: "DELETE",
+            url: kinveyBaseUrl + "appdata/" + kinveyAppKey + "/ticket-store/" + eventId,
+            headers: getKinveyUserAuthHeaders(),
+            success: deleteEventSuccess,
+            error: handleAjaxError
+        });
+
+        function deleteEventSuccess() {
+            showEventsView();
+            showInfo("Event deleted.");
+        }
     }
 
     function showLoginView() {
@@ -117,10 +234,14 @@ function startApp() {
         showView("viewCart");
     }
 
-    function showAdminView() {
-        $('#formEditEvent').trigger("reset");
+    function showCreateView() {
         $('#formCreateEvent').trigger("reset");
-        showView("viewAdmin");
+        showView("viewCreate");
+    }
+
+    function showEditView() {
+        $('#formEditEvent').trigger("reset");
+        showView("viewEdit");
     }
 
     function logoutUser() {
@@ -131,7 +252,7 @@ function startApp() {
         showInfo("Logout successful.");
     }
 
-    //Bind the form submit buttons - functions
+//Bind the form submit buttons - functions
     function loginUser() {
         let userData = {
             username: $('#formLogin input[name=username]').val(),
@@ -181,7 +302,7 @@ function startApp() {
 
     function saveAuthInSession(userInfo) {
         sessionStorage.setItem("username", userInfo.username);
-        sessionStorage.setItem("authToken", userInfo._kmd.authToken);
+        sessionStorage.setItem("authtoken", userInfo._kmd.authtoken);
         $('#loggedInUser').empty();
         $('#loggedInUser').text("Hello, " + userInfo.username + "!");
     }
@@ -212,6 +333,55 @@ function startApp() {
     }
 
     function createEvent() {
+        let eventData = {
+            star: $('#formCreateEvent input[name=star]').val(),
+            category: $('#formCreateEvent select[name=category]').val(),
+            date: $('#formCreateEvent input[name=date]').val(),
+            location: $('#formCreateEvent input[name=location]').val(),
+            price: $('#formCreateEvent input[name=price]').val(),
+            currency: $('#formCreateEvent select[name=currency]').val(),
+            tickets: $('#formCreateEvent input[name=tickets]').val(),
+            description: $('#formCreateEvent textarea[name=description]').val()
+        };
+        $.ajax({
+            method: "POST",
+            url: kinveyBaseUrl + "appdata/" + kinveyAppKey + "/ticket-store",
+            headers: getKinveyUserAuthHeaders(),
+            data: eventData,
+            success: createEventSuccess,
+            error: handleAjaxError
+        });
 
+        function createEventSuccess() {
+            showInfo("Event created.");
+            showEventsView();
+        }
+    }
+
+    function editEvent() {
+
+    }
+
+    function loadEventForEdit(eventId) {
+        $.ajax({
+            method: "GET",
+            url: kinveyBaseUrl + "appdata/" + kinveyAppKey + "/ticket-store/" + eventId,
+            headers: getKinveyUserAuthHeaders(),
+            success: loadEventForEditSuccess,
+            error: handleAjaxError
+        });
+
+        function loadEventForEditSuccess(event) {
+            $('#formEditEvent input[name=id]').val(event._id);
+            $('#formEditEvent input[name=star]').val(event.star);
+            $('#formEditEvent select[name=category]').val(event.category);
+            $('#formEditEvent input[name=date]').val(event.date);
+            $('#formEditEvent input[name=location]').val(event.location);
+            $('#formEditEvent input[name=price]').val(event.price);
+            $('#formEditEvent select[name=currency]').val(event.currency);
+            $('#formEditEvent input[name=tickets]').val(event.tickets);
+            $('#formEditEvent textarea[name=description]').val(event.description);
+            showView("viewEdit");
+        }
     }
 }

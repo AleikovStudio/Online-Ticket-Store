@@ -486,7 +486,7 @@ h2.title:before {
   padding: 5px 20px;
 }
 
-.category-products .panel-default .panel-heading .panel-title a {
+.category-products .panel-default .panel-heading .panel-title {
   color: #374851;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
@@ -530,7 +530,7 @@ h2.title:before {
   padding-top: 15px;
 }
 
-.brands-name .nav-stacked li a {
+.brands-name .nav-stacked li {
   background-color: #FFFFFF;
   color: #374851;
   font-family: 'Roboto', sans-serif;
@@ -1101,7 +1101,7 @@ h2.title {
 .login-form, .signup-form {
   width: 50%;
   background: #374851;
-  margin: 5% auto 15% auto;
+  margin: 5% auto 20% auto;
   padding: 30px 50px 50px 50px;
   border-radius: 30px;
   box-shadow: 2px 2px 2px #888888;
@@ -1402,8 +1402,8 @@ h2.title {
 }
 
 .user_info input, select, textarea {
-  background: #F0F0E9;
-  border: 0;
+  background: #fff;
+  border: 1px solid #A9A9A9;
   color: #374851;
   padding: 5px;
   width: 100%;
@@ -1412,7 +1412,7 @@ h2.title {
 }
 
 .user_info select:focus {
-  border: 0
+  border: 0;
 }
 
 .chose_area .update {
@@ -1617,7 +1617,7 @@ h2.title {
 ******* Elements ******
 **************************/
 
-#loadingBox, #infoBox, #errorBox, #viewLogin, #viewRegister, #viewEvents, #viewMyAccount, #viewCart, #viewAdmin {
+#loadingBox, #infoBox, #errorBox, #viewLogin, #viewRegister, #viewEvents, #viewMyAccount, #viewCart, #viewCreate, #viewEdit {
   display: none;
 }
 
@@ -1627,10 +1627,20 @@ h2.title {
 
 #formEditEvent, #formCreateEvent {
   width: 100%;
+  background: #f9f9f9;
+  padding: 0 30px 30px 30px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px #888888;
+  margin-top: 30px;
+  margin-bottom: 5%;
+}
+
+#formCreateEvent {
+  border: 2px solid green;
 }
 
 #formEditEvent {
-  margin-bottom: 10%;
+  border: 2px solid #0376C0;
 }
 
 #events > table {
@@ -1651,7 +1661,24 @@ h2.title {
 #events table td {
   padding: 5px 10px;
   background: #F7F7F5;
+  text-align: center;
   color: #374851;
   border: 1px solid #374851;
   font-weight: 400;
+}
+
+#linkCreate {
+  color: green;
+}
+
+#linkEdit {
+  color: #0376C0;
+}
+
+#viewCreate > h2 {
+  color: green;
+}
+
+#viewEdit > h2 {
+  color: #0376C0;
 }
