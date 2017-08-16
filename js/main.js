@@ -313,7 +313,7 @@ function startApp() {
         $('#infoBox').show();
         setTimeout(function () {
             $('#infoBox').fadeOut();
-        }, 3000);
+        }, 5000);
     }
 
 
